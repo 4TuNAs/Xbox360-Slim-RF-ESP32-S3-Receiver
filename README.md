@@ -4,10 +4,12 @@ A DIY Xbox 360 wireless controller receiver built around the **original Xbox 360
 
 The ESP32 initializes the Microsoft RF board and handles its DATA, CLOCK, and SYNC/BTN control lines. USB data is connected to the RF board, while the ESP32-S3 is powered from USB +5 V and supplies 3.3 V to the RF board.
 
+## Finished build
+
+![Receiver with controllers](images/receiver-with-controllers.png)
+
 > [!IMPORTANT]
 > **Two external 10 kΩ pull-up resistors are mandatory.** DATA and CLOCK must each be pulled up to **3.3 V**. In this build the receiver does not work correctly without these resistors; the ESP32 internal pull-ups alone are not sufficient.
-
-![Wiring diagram](images/wiring-diagram.jpg)
 
 ## Features
 
@@ -18,8 +20,6 @@ The ESP32 initializes the Microsoft RF board and handles its DATA, CLOCK, and SY
 - USB connection to Windows
 - Standard Microsoft **Xbox 360 Wireless Receiver for Windows** driver
 - Custom 3D-printable enclosure
-
-![Receiver with controllers](images/receiver-with-controllers.png)
 
 ## Hardware
 
@@ -38,6 +38,8 @@ The enclosure model is included in [`hardware/xbox360-slim-rf-receiver-enclosure
 ![Internal assembly](images/internal-assembly.jpg)
 
 ## Wiring
+
+![Wiring diagram](images/wiring-diagram.jpg)
 
 ### RF board ↔ ESP32-S3 SuperMini
 
@@ -62,7 +64,7 @@ The RF board is powered from the ESP32-S3 **3V3** pin, **not directly from USB 5
 
 USB cable colors are not guaranteed. Verify the conductors with a multimeter before soldering. A typical USB-A cable uses pin 1 = +5 V, pin 2 = D−, pin 3 = D+, pin 4 = GND.
 
-## Mandatory pull-up resistors
+### Mandatory pull-up resistors
 
 Install two external **10 kΩ** pull-up resistors:
 
@@ -82,7 +84,7 @@ They can be soldered anywhere along the DATA and CLOCK lines; placing them near 
 > [!WARNING]
 > Do not omit R1 and R2. Without the external pull-ups, communication with the RF board does not work correctly in this build.
 
-## ESP32 pin assignment
+### ESP32 pin assignment
 
 The firmware uses:
 
@@ -155,6 +157,22 @@ Serial baud rate: **115200**.
 | `S` / `s` | Start controller synchronization |
 | `I` / `i` | Reinitialize the RF board |
 
+## Windows driver installation
+
+Windows may initially detect the receiver as **Unknown device (Code 28)**. Install the standard Microsoft Xbox 360 receiver driver manually.
+
+![Driver installation](images/driver-installation.png)
+
+1. Open **Device Manager**.
+2. Right-click the unknown device and choose **Update driver**.
+3. Select **Browse my computer for drivers**.
+4. Select **Let me pick from a list of available drivers on my computer**.
+5. Choose **Xbox 360 Peripherals**.
+6. Select **Xbox 360 Wireless Receiver for Windows**.
+7. Confirm the installation.
+
+After installation, Windows should treat the device as an Xbox 360 wireless receiver.
+
 ## Troubleshooting
 
 ### RF board does not respond / CLOCK timeout
@@ -173,7 +191,7 @@ The external pull-ups are mandatory for this build.
 
 ### Windows shows Unknown Device
 
-This is expected before the Xbox 360 receiver driver is selected. See **Windows driver installation** at the end of this README.
+This is expected before the Xbox 360 receiver driver is selected. See **Windows driver installation** above.
 
 ## Project files
 
@@ -194,19 +212,3 @@ This is expected before the Xbox 360 receiver driver is selected. See **Windows 
 ## Disclaimer
 
 This is an unofficial hardware modification project. Xbox, Xbox 360, and Microsoft are trademarks of Microsoft Corporation. This project is not affiliated with or endorsed by Microsoft.
-
-## Windows driver installation
-
-Windows may initially detect the receiver as **Unknown device (Code 28)**. Install the standard Microsoft Xbox 360 receiver driver manually.
-
-![Driver installation](images/driver-installation.png)
-
-1. Open **Device Manager**.
-2. Right-click the unknown device and choose **Update driver**.
-3. Select **Browse my computer for drivers**.
-4. Select **Let me pick from a list of available drivers on my computer**.
-5. Choose **Xbox 360 Peripherals**.
-6. Select **Xbox 360 Wireless Receiver for Windows**.
-7. Confirm the installation.
-
-After installation, Windows should treat the device as an Xbox 360 wireless receiver.
