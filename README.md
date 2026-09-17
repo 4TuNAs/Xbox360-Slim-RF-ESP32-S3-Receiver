@@ -8,9 +8,6 @@ The ESP32 initializes the Microsoft RF board and handles its DATA, CLOCK, and SY
 
 ![Receiver with controllers](images/receiver-with-controllers.png)
 
-> [!IMPORTANT]
-> **Two external 10 kΩ pull-up resistors are mandatory.** DATA and CLOCK must each be pulled up to **3.3 V**. In this build the receiver does not work correctly without these resistors; the ESP32 internal pull-ups alone are not sufficient.
-
 ## Features
 
 - Original Xbox 360 Slim RF board
@@ -40,6 +37,9 @@ The enclosure model is included in [`hardware/xbox360-slim-rf-receiver-enclosure
 ## Wiring
 
 ![Wiring diagram](images/wiring-diagram.jpg)
+
+> [!IMPORTANT]
+> **Two external 10 kΩ pull-up resistors are mandatory.** DATA and CLOCK must each be pulled up to **3.3 V**. In this build the receiver does not work correctly without these resistors; the ESP32 internal pull-ups alone are not sufficient.
 
 ### RF board ↔ ESP32-S3 SuperMini
 
@@ -157,22 +157,6 @@ Serial baud rate: **115200**.
 | `S` / `s` | Start controller synchronization |
 | `I` / `i` | Reinitialize the RF board |
 
-## Windows driver installation
-
-Windows may initially detect the receiver as **Unknown device (Code 28)**. Install the standard Microsoft Xbox 360 receiver driver manually.
-
-![Driver installation](images/driver-installation.png)
-
-1. Open **Device Manager**.
-2. Right-click the unknown device and choose **Update driver**.
-3. Select **Browse my computer for drivers**.
-4. Select **Let me pick from a list of available drivers on my computer**.
-5. Choose **Xbox 360 Peripherals**.
-6. Select **Xbox 360 Wireless Receiver for Windows**.
-7. Confirm the installation.
-
-After installation, Windows should treat the device as an Xbox 360 wireless receiver.
-
 ## Troubleshooting
 
 ### RF board does not respond / CLOCK timeout
@@ -191,7 +175,7 @@ The external pull-ups are mandatory for this build.
 
 ### Windows shows Unknown Device
 
-This is expected before the Xbox 360 receiver driver is selected. See **Windows driver installation** above.
+This is expected before the Xbox 360 receiver driver is selected. See **Windows driver installation** below.
 
 ## Project files
 
@@ -212,3 +196,19 @@ This is expected before the Xbox 360 receiver driver is selected. See **Windows 
 ## Disclaimer
 
 This is an unofficial hardware modification project. Xbox, Xbox 360, and Microsoft are trademarks of Microsoft Corporation. This project is not affiliated with or endorsed by Microsoft.
+
+## Windows driver installation
+
+Windows may initially detect the receiver as **Unknown device (Code 28)**. Install the standard Microsoft Xbox 360 receiver driver manually.
+
+![Driver installation](images/driver-installation.png)
+
+1. Open **Device Manager**.
+2. Right-click the unknown device and choose **Update driver**.
+3. Select **Browse my computer for drivers**.
+4. Select **Let me pick from a list of available drivers on my computer**.
+5. Choose **Xbox 360 Peripherals**.
+6. Select **Xbox 360 Wireless Receiver for Windows**.
+7. Confirm the installation.
+
+After installation, Windows should treat the device as an Xbox 360 wireless receiver.
