@@ -7,7 +7,7 @@ The ESP32 initializes the Microsoft RF board and handles its DATA, CLOCK, and SY
 > [!IMPORTANT]
 > **Two external 10 kΩ pull-up resistors are mandatory.** DATA and CLOCK must each be pulled up to **3.3 V**. In this build the receiver does not work correctly without these resistors; the ESP32 internal pull-ups alone are not sufficient.
 
-![Wiring diagram](images/wiring.jpeg)
+![Wiring diagram](images/wiring-diagram.jpg)
 
 ## Features
 
@@ -31,7 +31,11 @@ The ESP32 initializes the Microsoft RF board and handles its DATA, CLOCK, and SY
 - Soldering equipment
 - Optional 3D-printed enclosure
 
-The enclosure model is included in [`hardware/Xbox 360 Joystic Controller.3mf`](hardware/Xbox%20360%20Joystic%20Controller.3mf).
+The enclosure model is included in [`hardware/xbox360-slim-rf-receiver-enclosure.3mf`](hardware/xbox360-slim-rf-receiver-enclosure.3mf).
+
+### Internal assembly
+
+![Internal assembly](images/internal-assembly.jpg)
 
 ## Wiring
 
@@ -200,9 +204,10 @@ Xbox 360 Peripherals
 ├── firmware/
 │   └── xbox360_rf_receiver.ino
 ├── hardware/
-│   └── Xbox 360 Joystic Controller.3mf
+│   └── xbox360-slim-rf-receiver-enclosure.3mf
 └── images/
-    ├── wiring.jpeg
+    ├── wiring-diagram.jpg
+    ├── internal-assembly.jpg
     ├── receiver-with-controllers.png
     └── driver-installation.png
 ```
