@@ -155,22 +155,6 @@ Serial baud rate: **115200**.
 | `S` / `s` | Start controller synchronization |
 | `I` / `i` | Reinitialize the RF board |
 
-## Windows driver installation
-
-Windows may initially detect the receiver as **Unknown device (Code 28)**. Install the standard Microsoft Xbox 360 receiver driver manually.
-
-![Driver installation](images/driver-installation.png)
-
-1. Open **Device Manager**.
-2. Right-click the unknown device and choose **Update driver**.
-3. Select **Browse my computer for drivers**.
-4. Select **Let me pick from a list of available drivers on my computer**.
-5. Choose **Xbox 360 Peripherals**.
-6. Select **Xbox 360 Wireless Receiver for Windows**.
-7. Confirm the installation.
-
-After installation, Windows should treat the device as an Xbox 360 wireless receiver.
-
 ## Troubleshooting
 
 ### RF board does not respond / CLOCK timeout
@@ -189,12 +173,7 @@ The external pull-ups are mandatory for this build.
 
 ### Windows shows Unknown Device
 
-Manually select:
-
-```text
-Xbox 360 Peripherals
-└── Xbox 360 Wireless Receiver for Windows
-```
+This is expected before the Xbox 360 receiver driver is selected. See **Windows driver installation** at the end of this README.
 
 ## Project files
 
@@ -215,3 +194,19 @@ Xbox 360 Peripherals
 ## Disclaimer
 
 This is an unofficial hardware modification project. Xbox, Xbox 360, and Microsoft are trademarks of Microsoft Corporation. This project is not affiliated with or endorsed by Microsoft.
+
+## Windows driver installation
+
+Windows may initially detect the receiver as **Unknown device (Code 28)**. Install the standard Microsoft Xbox 360 receiver driver manually.
+
+![Driver installation](images/driver-installation.png)
+
+1. Open **Device Manager**.
+2. Right-click the unknown device and choose **Update driver**.
+3. Select **Browse my computer for drivers**.
+4. Select **Let me pick from a list of available drivers on my computer**.
+5. Choose **Xbox 360 Peripherals**.
+6. Select **Xbox 360 Wireless Receiver for Windows**.
+7. Confirm the installation.
+
+After installation, Windows should treat the device as an Xbox 360 wireless receiver.
